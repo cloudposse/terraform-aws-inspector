@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
@@ -25,6 +26,7 @@ func TestExamplesComplete(t *testing.T) {
 
 	// We always include a random attribute so that parallel tests and AWS resources do not interfere with each
 	// other
+	rand.Seed(time.Now().UnixNano())
 	randID := strconv.Itoa(rand.Intn(100000))
 	attributes := []string{randID}
 
