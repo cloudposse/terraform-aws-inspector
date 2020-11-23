@@ -1,14 +1,21 @@
-output "id" {
-  description = "ID of the created example"
-  value       = module.example.id
+output "inspector_assessment_target" {
+  description = "The AWS Inspector assessment target"
+  value       = module.inspector.inspector_assessment_target
 }
 
-output "example" {
-  description = "Output \"example\" from example module"
-  value       = module.example.example
+output "aws_inspector_assessment_template_id" {
+  description = "The AWS Inspector assessment template ids"
+  value       = module.inspector.aws_inspector_assessment_template
 }
 
-output "random" {
-  description = "Output \"random\" from example module"
-  value       = module.example.random
+output "aws_cloudwatch_event_rule" {
+  description = "The AWS Inspector event rule"
+  # hardcoding this to the [0] instance for this example until the following issue is resolved:
+  # https://github.com/gruntwork-io/terratest/issues/710
+  value = module.inspector.aws_cloudwatch_event_rule[0]
+}
+
+output "aws_cloudwatch_event_target" {
+  description = "The AWS Inspector event target"
+  value       = module.inspector.aws_cloudwatch_event_target[0]
 }
