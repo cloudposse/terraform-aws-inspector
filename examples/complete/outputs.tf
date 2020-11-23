@@ -17,5 +17,7 @@ output "aws_cloudwatch_event_rule" {
 
 output "aws_cloudwatch_event_target" {
   description = "The AWS Inspector event target"
-  value       = module.inspector.aws_cloudwatch_event_target[0]
+  # hardcoding this to the [0] instance for this example until the following issue is resolved:
+  # https://github.com/gruntwork-io/terratest/issues/710
+  value = module.inspector.aws_cloudwatch_event_target[0]
 }
