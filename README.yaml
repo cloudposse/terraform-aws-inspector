@@ -39,6 +39,9 @@ related:
   - name: "terraform-null-label"
     description: "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention."
     url: "https://github.com/cloudposse/terraform-null-label"
+  - name: "terraform-aws-security-hub"
+    description: "Terraform module that enables and configures AWS Security Hub." 
+    url: "https://github.com/cloudposse/terraform-aws-security-hub"
 
 # List any resources helpful for someone to get started. For example, link to the hashicorp documentation or AWS documentation.
 references:
@@ -57,8 +60,8 @@ references:
 
 # Short description of this project
 description: |-
-  This is `terraform-aws-inspector` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-  use when creating new repositories.
+  This module enables [AWS Inspector](https://aws.amazon.com/inspector/) in one region of one account and optionally 
+  enables various rules packages.
 
 # Introduction to the project
 #introduction: |-
@@ -72,9 +75,11 @@ usage: |-
   (which tests and deploys the example on AWS), see [test](test).
 
   ```hcl
-  module "example" {
+  module "inspector" {
     source = "https://github.com/cloudposse/terraform-aws-inspector.git?ref=master"
-    example = "Hello world!"
+    
+    create_iam_role = true
+    enabled_rules   = ["arn:aws:inspector:us-east-2:646659390643:rulespackage/0-m8r61nnh"]
   }
   ```
 
@@ -94,5 +99,5 @@ include:
 
 # Contributors to this project
 contributors:
-  - name: "Erik Osterman"
-    github: "osterman"
+  - name: "Matt Calhoun"
+    github: "mcalhoun"

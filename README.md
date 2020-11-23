@@ -25,8 +25,8 @@
 
 -->
 
-This is `terraform-aws-inspector` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-use when creating new repositories.
+This module enables [AWS Inspector](https://aws.amazon.com/inspector/) in one region of one account and optionally 
+enables various rules packages.
 
 
 ---
@@ -73,9 +73,11 @@ For automated tests of the complete example using [bats](https://github.com/bats
 (which tests and deploys the example on AWS), see [test](test).
 
 ```hcl
-module "example" {
+module "inspector" {
   source = "https://github.com/cloudposse/terraform-aws-inspector.git?ref=master"
-  example = "Hello world!"
+  
+  create_iam_role = true
+  enabled_rules   = ["arn:aws:inspector:us-east-2:646659390643:rulespackage/0-m8r61nnh"]
 }
 ```
 
@@ -163,6 +165,7 @@ Are you using this project or any of our other projects? Consider [leaving a tes
 Check out these related projects.
 
 - [terraform-null-label](https://github.com/cloudposse/terraform-null-label) - Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention.
+- [terraform-aws-security-hub](https://github.com/cloudposse/terraform-aws-security-hub) - Terraform module that enables and configures AWS Security Hub.
 
 
 
@@ -308,11 +311,11 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 
 ### Contributors
 
-|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] |
+|  [![Matt Calhoun][mcalhoun_avatar]][mcalhoun_homepage]<br/>[Matt Calhoun][mcalhoun_homepage] |
 |---|
 
-  [osterman_homepage]: https://github.com/osterman
-  [osterman_avatar]: https://img.cloudposse.com/150x150/https://github.com/osterman.png
+  [mcalhoun_homepage]: https://github.com/mcalhoun
+  [mcalhoun_avatar]: https://img.cloudposse.com/150x150/https://github.com/mcalhoun.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
