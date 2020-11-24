@@ -130,6 +130,7 @@ Available targets:
 | enabled | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | enabled\_rules | A list of AWS Inspector rules that should run on a periodic basis. <br><br>For a list of available rules by region, see:<br>https://docs.aws.amazon.com/inspector/latest/userguide/inspector_rules-arns.html | `list(string)` | n/a | yes |
 | environment | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| event\_rule\_description | A description of the CloudWatch event rule | `string` | `"Trigger an AWS Inspector Assessment"` | no |
 | iam\_role\_arn | The ARN for an IAM Role AWS Config uses to make read or write requests to the delivery channel and to describe the <br>AWS resources associated with the account. This is only used if create\_iam\_role is false.<br><br>If you want to use an existing IAM Role, set the value of this to the ARN of the existing topic and set <br>create\_iam\_role to false. | `string` | `null` | no |
 | id\_length\_limit | Limit `id` to this many characters.<br>Set to `0` for unlimited length.<br>Set to `null` for default, which is `0`.<br>Does not affect `id_full`. | `number` | `null` | no |
 | label\_order | The naming order of the id output and Name tag.<br>Defaults to ["namespace", "environment", "stage", "name", "attributes"].<br>You can omit any of the 5 elements, but at least one must be present. | `list(string)` | `null` | no |
