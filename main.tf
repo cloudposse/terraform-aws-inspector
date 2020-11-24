@@ -42,7 +42,7 @@ module "insepector_schedule_label" {
 resource "aws_cloudwatch_event_rule" "schedule" {
   count               = local.create_scheduled_event ? 1 : 0
   name                = module.insepector_schedule_label.id
-  description         = "Trigger an AWS Inspector Assessment"
+  description         = var.event_rule_description
   schedule_expression = var.schedule_expression
 }
 

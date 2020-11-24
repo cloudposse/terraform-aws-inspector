@@ -33,6 +33,12 @@ variable "schedule_expression" {
   default     = "rate(7 days)"
 }
 
+variable "event_rule_description" {
+  type        = string
+  description = "A description of the CloudWatch event rule"
+  default     = "Trigger an AWS Inspector Assessment"
+}
+
 variable "enabled_rules" {
   type        = list(string)
   description = <<-DOC
