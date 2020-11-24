@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -46,11 +47,22 @@ func TestExamplesComplete(t *testing.T) {
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
+	// Define a struct that can be Why
+	type HasID struct {
+		ID string `json:"id"`
+	}
+
+	type outputs []HasID
+
+	var cloudwatchEventRules outputs
+	var cloudwatchEventTargets outputs
+
 	// Get terraform Outputs
 	inspectorAssessmentTarget := terraform.OutputMap(t, terraformOptions, "inspector_assessment_target")
 	inspectorAssessmentTemplateID := terraform.OutputMap(t, terraformOptions, "aws_inspector_assessment_template_id")
-	cloudwatchEventRule := terraform.OutputMap(t, terraformOptions, "aws_cloudwatch_event_rule")
-	cloudwatchEventTarget := terraform.OutputMap(t, terraformOptions, "aws_cloudwatch_event_target")
+	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_rule", &cloudwatchEventRules)
+	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_target", &cloudwatchEventTargets)
+	fmt.Println(cloudwatchEventRules)
 
 	// Verify we're getting back the outputs we expect
 	assert.Contains(t, inspectorAssessmentTarget, "id")
@@ -58,9 +70,7 @@ func TestExamplesComplete(t *testing.T) {
 
 	assert.Greater(t, len(inspectorAssessmentTemplateID), 0)
 
-	assert.Contains(t, cloudwatchEventRule, "id")
-	assert.Greater(t, len(cloudwatchEventRule["id"]), 0)
+	assert.Equal(t, cloudwatchEventRules[0].ID, "eg-ue2-test-"+randID+"-inspector-schedule")
 
-	assert.Contains(t, cloudwatchEventTarget, "id")
-	assert.Greater(t, len(cloudwatchEventTarget["id"]), 0)
+	assert.Contains(t, cloudwatchEventTargets[0].ID, "eg-ue2-test-"+randID+"-inspector-schedule-terraform")
 }
