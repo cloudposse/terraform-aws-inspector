@@ -4,22 +4,12 @@ import (
 	"fmt"
 	"math/rand"
 	"strconv"
-	"strings"
 	"testing"
 	"time"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 )
-
-func listContains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e || strings.Contains(a, e) {
-			return true
-		}
-	}
-	return false
-}
 
 // Test the Terraform module in examples/complete using Terratest.
 func TestExamplesComplete(t *testing.T) {
