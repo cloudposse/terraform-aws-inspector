@@ -26,7 +26,7 @@
 -->
 
 This module enables [AWS Inspector](https://aws.amazon.com/inspector/) in one region of one account and optionally 
-enables various rules packages.
+enables [various rules packages provided by AWS](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_rules-arns.html).
 
 
 ---
@@ -179,6 +179,7 @@ For additional context, refer to some of these links.
 - [Terraform Module Requirements](https://www.terraform.io/docs/registry/modules/publish.html#requirements) - HashiCorp's guidance on all the requirements for publishing a module. Meeting the requirements for publishing a module is extremely easy.
 - [Terraform `random_integer` Resource](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer) - The resource random_integer generates random values from a given range, described by the min and max attributes of a given resource.
 - [Terraform Version Pinning](https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version) - The required_version setting can be used to constrain which versions of the Terraform CLI can be used with your configuration
+- [AWS Inspector Rules ARNs](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_rules-arns.html) - A list of AWS Inspector rules ARNs for each of the various AWS regions
 
 
 ## Help
