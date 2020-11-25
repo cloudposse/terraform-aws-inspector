@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Setup AWS Inspector
 #-----------------------------------------------------------------------------------------------------------------------
-module "insepector_assessment_target_label" {
+module "inspector_assessment_target_label" {
   source  = "cloudposse/label/null"
   version = "0.21.0"
 
@@ -10,10 +10,10 @@ module "insepector_assessment_target_label" {
 }
 
 resource "aws_inspector_assessment_target" "target" {
-  name = module.insepector_assessment_target_label.id
+  name = module.inspector_assessment_target_label.id
 }
 
-module "insepector_assessment_template_label" {
+module "inspector_assessment_template_label" {
   source  = "cloudposse/label/null"
   version = "0.21.0"
 
@@ -22,7 +22,7 @@ module "insepector_assessment_template_label" {
 }
 
 resource "aws_inspector_assessment_template" "assessment" {
-  name               = module.insepector_assessment_template_label.id
+  name               = module.inspector_assessment_template_label.id
   target_arn         = aws_inspector_assessment_target.target.arn
   duration           = var.assessment_duration
   rules_package_arns = var.enabled_rules
@@ -31,7 +31,7 @@ resource "aws_inspector_assessment_template" "assessment" {
 #-----------------------------------------------------------------------------------------------------------------------
 # Create a scheduled event to run inspector
 #-----------------------------------------------------------------------------------------------------------------------
-module "insepector_schedule_label" {
+module "inspector_schedule_label" {
   source  = "cloudposse/label/null"
   version = "0.21.0"
 
@@ -41,7 +41,7 @@ module "insepector_schedule_label" {
 
 resource "aws_cloudwatch_event_rule" "schedule" {
   count               = local.create_scheduled_event ? 1 : 0
-  name                = module.insepector_schedule_label.id
+  name                = module.inspector_schedule_label.id
   description         = var.event_rule_description
   schedule_expression = var.schedule_expression
 }
