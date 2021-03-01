@@ -4,22 +4,22 @@
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13.0 |
-| aws | >= 2 |
+| aws | >= 2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2 |
+| aws | >= 2.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | iam_role | cloudposse/iam-role/aws | 0.6.1 |
-| inspector_assessment_target_label | cloudposse/label/null | 0.21.0 |
-| inspector_assessment_template_label | cloudposse/label/null | 0.21.0 |
-| inspector_schedule_label | cloudposse/label/null | 0.21.0 |
+| inspector_assessment_target_label | cloudposse/label/null | 0.24.1 |
+| inspector_assessment_template_label | cloudposse/label/null | 0.24.1 |
+| inspector_schedule_label | cloudposse/label/null | 0.24.1 |
 | this | cloudposse/label/null | 0.24.1 |
 
 ## Resources

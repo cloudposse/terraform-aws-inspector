@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 module "inspector_assessment_target_label" {
   source  = "cloudposse/label/null"
-  version = "0.21.0"
+  version = "0.24.1"
 
   attributes = concat(module.this.attributes, ["inspector", "assessment", "target"])
   context    = module.this.context
@@ -15,7 +15,7 @@ resource "aws_inspector_assessment_target" "target" {
 
 module "inspector_assessment_template_label" {
   source  = "cloudposse/label/null"
-  version = "0.21.0"
+  version = "0.24.1"
 
   attributes = concat(module.this.attributes, ["inspector", "assessment", "template"])
   context    = module.this.context
@@ -33,7 +33,7 @@ resource "aws_inspector_assessment_template" "assessment" {
 #-----------------------------------------------------------------------------------------------------------------------
 module "inspector_schedule_label" {
   source  = "cloudposse/label/null"
-  version = "0.21.0"
+  version = "0.24.1"
 
   attributes = concat(module.this.attributes, ["inspector", "schedule"])
   context    = module.this.context
