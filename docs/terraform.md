@@ -16,7 +16,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| iam_role | cloudposse/iam-role/aws | 0.6.1 |
+| iam_role | cloudposse/iam-role/aws | 0.9.3 |
 | inspector_assessment_target_label | cloudposse/label/null | 0.24.1 |
 | inspector_assessment_template_label | cloudposse/label/null | 0.24.1 |
 | inspector_schedule_label | cloudposse/label/null | 0.24.1 |
