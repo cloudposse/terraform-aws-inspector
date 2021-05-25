@@ -10,6 +10,8 @@ module "inspector_assessment_target_label" {
 }
 
 resource "aws_inspector_assessment_target" "target" {
+  count = local.create ? 1 : 0
+
   name = module.inspector_assessment_target_label.id
 }
 
@@ -22,8 +24,10 @@ module "inspector_assessment_template_label" {
 }
 
 resource "aws_inspector_assessment_template" "assessment" {
+  count = local.create ? 1 : 0
+
   name               = module.inspector_assessment_template_label.id
-  target_arn         = aws_inspector_assessment_target.target.arn
+  target_arn         = aws_inspector_assessment_target.target[0].arn
   duration           = var.assessment_duration
   rules_package_arns = var.enabled_rules
 }
@@ -40,21 +44,21 @@ module "inspector_schedule_label" {
 }
 
 resource "aws_cloudwatch_event_rule" "schedule" {
-  count               = local.create_scheduled_event ? 1 : 0
+  count               = local.create ? 1 : 0
   name                = module.inspector_schedule_label.id
   description         = var.event_rule_description
   schedule_expression = var.schedule_expression
 }
 
 resource "aws_cloudwatch_event_target" "target" {
-  count    = local.create_scheduled_event ? 1 : 0
+  count    = local.create ? 1 : 0
   rule     = aws_cloudwatch_event_rule.schedule[0].name
-  arn      = aws_inspector_assessment_template.assessment.arn
+  arn      = aws_inspector_assessment_template.assessment[0].arn
   role_arn = local.create_iam_role ? module.iam_role[0].arn : var.iam_role_arn
 }
 
 #-----------------------------------------------------------------------------------------------------------------------
-# Optionally create an IAM Role 
+# Optionally create an IAM Role
 #-----------------------------------------------------------------------------------------------------------------------
 module "iam_role" {
   count   = local.create_iam_role ? 1 : 0
@@ -93,6 +97,6 @@ data "aws_iam_policy_document" "start_assessment_policy" {
 # Locals and Data References
 #-----------------------------------------------------------------------------------------------------------------------
 locals {
-  create_iam_role        = module.this.enabled && var.create_iam_role
-  create_scheduled_event = module.this.enabled
+  create          = module.this.enabled && length(var.enabled_rules) > 0
+  create_iam_role = local.create && var.create_iam_role
 }
