@@ -3,8 +3,8 @@ output "inspector_assessment_target" {
   value       = module.inspector.inspector_assessment_target
 }
 
-output "aws_inspector_assessment_template_id" {
-  description = "The AWS Inspector assessment template ids"
+output "aws_inspector_assessment_template" {
+  description = "The AWS Inspector assessment template"
   value       = module.inspector.aws_inspector_assessment_template
 }
 
