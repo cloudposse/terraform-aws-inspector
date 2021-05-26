@@ -1,19 +1,19 @@
 output "inspector_assessment_target" {
   description = "The AWS Inspector assessment target"
-  value       = aws_inspector_assessment_target.target
+  value       = try(aws_inspector_assessment_target.target[0], {})
 }
 
 output "aws_inspector_assessment_template" {
   description = "The AWS Inspector assessment template"
-  value       = aws_inspector_assessment_template.assessment
+  value       = try(aws_inspector_assessment_template.assessment[0], {})
 }
 
 output "aws_cloudwatch_event_rule" {
   description = "The AWS Inspector event rule"
-  value       = aws_cloudwatch_event_rule.schedule
+  value       = try(aws_cloudwatch_event_rule.schedule[0], {})
 }
 
 output "aws_cloudwatch_event_target" {
   description = "The AWS Inspector event target"
-  value       = aws_cloudwatch_event_target.target
+  value       = try(aws_cloudwatch_event_target.target[0], {})
 }

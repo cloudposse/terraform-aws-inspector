@@ -37,30 +37,22 @@ func TestExamplesComplete(t *testing.T) {
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
-	// Define a struct that can be Why
-	type HasID struct {
-		ID string `json:"id"`
-	}
-
-	type outputs []HasID
-
-	var cloudwatchEventRules outputs
-	var cloudwatchEventTargets outputs
+	var inspectorAssessmentTarget map[string]interface{}
+	var inspectorAssessmentTemplate map[string]interface{}
+	var cloudwatchEventRule map[string]interface{}
+	var cloudwatchEventTarget map[string]interface{}
 
 	// Get terraform Outputs
-	inspectorAssessmentTarget := terraform.OutputMap(t, terraformOptions, "inspector_assessment_target")
-	inspectorAssessmentTemplateID := terraform.OutputMap(t, terraformOptions, "aws_inspector_assessment_template_id")
-	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_rule", &cloudwatchEventRules)
-	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_target", &cloudwatchEventTargets)
-	fmt.Println(cloudwatchEventRules)
+	terraform.OutputStruct(t, terraformOptions, "inspector_assessment_target", &inspectorAssessmentTarget)
+	terraform.OutputStruct(t, terraformOptions, "aws_inspector_assessment_template", &inspectorAssessmentTemplate)
+	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_rule", &cloudwatchEventRule)
+	terraform.OutputStruct(t, terraformOptions, "aws_cloudwatch_event_target", &cloudwatchEventTarget)
+	fmt.Println(cloudwatchEventRule)
 
 	// Verify we're getting back the outputs we expect
 	assert.Contains(t, inspectorAssessmentTarget, "id")
-	assert.Greater(t, len(inspectorAssessmentTarget["id"]), 0)
+	assert.Contains(t, inspectorAssessmentTemplate, "id")
 
-	assert.Greater(t, len(inspectorAssessmentTemplateID), 0)
-
-	assert.Equal(t, cloudwatchEventRules[0].ID, "eg-ue2-test-"+randID+"-inspector-schedule")
-
-	assert.Contains(t, cloudwatchEventTargets[0].ID, "eg-ue2-test-"+randID+"-inspector-schedule-terraform")
+	assert.Equal(t, cloudwatchEventRule["id"], "eg-ue2-test-"+randID+"-inspector-schedule")
+	assert.Contains(t, cloudwatchEventTarget["id"], "eg-ue2-test-"+randID+"-inspector-schedule-terraform")
 }
