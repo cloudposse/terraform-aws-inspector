@@ -90,7 +90,8 @@ usage: |-
   ```hcl
   module "inspector" {
     source  = "cloudposse/inspector/aws"
-    version = "0.2.0"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version     = "x.x.x"
     
     create_iam_role = true
     enabled_rules   = ["cis"]
