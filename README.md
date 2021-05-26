@@ -101,10 +101,12 @@ For automated tests of the complete example using [bats](https://github.com/bats
 
 ```hcl
 module "inspector" {
-  source = "https://github.com/cloudposse/terraform-aws-inspector.git?ref=master"
+  source  = "cloudposse/inspector/aws"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
   
   create_iam_role = true
-  enabled_rules   = ["arn:aws:inspector:us-east-2:646659390643:rulespackage/0-m8r61nnh"]
+  enabled_rules   = ["cis"]
 }
 ```
 
@@ -362,12 +364,14 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 ### Contributors
 
 <!-- markdownlint-disable -->
-|  [![Matt Calhoun][mcalhoun_avatar]][mcalhoun_homepage]<br/>[Matt Calhoun][mcalhoun_homepage] |
-|---|
+|  [![Matt Calhoun][mcalhoun_avatar]][mcalhoun_homepage]<br/>[Matt Calhoun][mcalhoun_homepage] | [![RB][nitrocode_avatar]][nitrocode_homepage]<br/>[RB][nitrocode_homepage] |
+|---|---|
 <!-- markdownlint-restore -->
 
   [mcalhoun_homepage]: https://github.com/mcalhoun
   [mcalhoun_avatar]: https://img.cloudposse.com/150x150/https://github.com/mcalhoun.png
+  [nitrocode_homepage]: https://github.com/nitrocode
+  [nitrocode_avatar]: https://img.cloudposse.com/150x150/https://github.com/nitrocode.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
