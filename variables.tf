@@ -6,10 +6,10 @@ variable "create_iam_role" {
 
 variable "iam_role_arn" {
   description = <<-DOC
-    The ARN for an IAM Role AWS Config uses to make read or write requests to the delivery channel and to describe the 
+    The ARN for an IAM Role AWS Config uses to make read or write requests to the delivery channel and to describe the
     AWS resources associated with the account. This is only used if create_iam_role is false.
-  
-    If you want to use an existing IAM Role, set the value of this to the ARN of the existing topic and set 
+
+    If you want to use an existing IAM Role, set the value of this to the ARN of the existing topic and set
     create_iam_role to false.
   DOC
   default     = null
@@ -25,9 +25,9 @@ variable "assessment_duration" {
 variable "schedule_expression" {
   type        = string
   description = <<-DOC
-    An AWS Schedule Expression to indicate how often the scheduled event shoud run. 
-  
-    For more information see: 
+    An AWS Schedule Expression to indicate how often the scheduled event shoud run.
+
+    For more information see:
     https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
   DOC
   default     = "rate(7 days)"
@@ -42,9 +42,8 @@ variable "event_rule_description" {
 variable "enabled_rules" {
   type        = list(string)
   description = <<-DOC
-    A list of AWS Inspector rules that should run on a periodic basis. 
-    
-    For a list of available rules by region, see:
-    https://docs.aws.amazon.com/inspector/latest/userguide/inspector_rules-arns.html
+    A list of AWS Inspector rules that should run on a periodic basis.
+
+    Valid values are `cve`, `cis`, `nr`, `sbp` which map to the appropriate [Inspector rule arns by region](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_rules-arns.html).
   DOC
 }
