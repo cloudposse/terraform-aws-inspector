@@ -65,6 +65,8 @@ module "iam_role" {
   source  = "cloudposse/iam-role/aws"
   version = "0.15.0"
 
+  name = var.iam_role_name
+
   principals = {
     "Service" = ["events.amazonaws.com"]
   }

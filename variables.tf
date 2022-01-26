@@ -4,6 +4,12 @@ variable "create_iam_role" {
   default     = false
 }
 
+variable "iam_role_name" {
+  description = "Name of IAM role to create"
+  type        = bool
+  default     = null
+}
+
 variable "iam_role_arn" {
   description = <<-DOC
     The ARN for an IAM Role AWS Config uses to make read or write requests to the delivery channel and to describe the
