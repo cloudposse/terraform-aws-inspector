@@ -148,7 +148,7 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | cloudposse/iam-role/aws | 0.13.0 |
+| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | cloudposse/iam-role/aws | 0.15.0 |
 | <a name="module_inspector_assessment_target_label"></a> [inspector\_assessment\_target\_label](#module\_inspector\_assessment\_target\_label) | cloudposse/label/null | 0.25.0 |
 | <a name="module_inspector_assessment_template_label"></a> [inspector\_assessment\_template\_label](#module\_inspector\_assessment\_template\_label) | cloudposse/label/null | 0.25.0 |
 | <a name="module_inspector_schedule_label"></a> [inspector\_schedule\_label](#module\_inspector\_schedule\_label) | cloudposse/label/null | 0.25.0 |
@@ -305,7 +305,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyrights
 
-Copyright © 2020-2021 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2020-2022 [Cloud Posse, LLC](https://cloudposse.com)
 
 
 
