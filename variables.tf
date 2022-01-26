@@ -6,7 +6,7 @@ variable "create_iam_role" {
 
 variable "iam_role_name" {
   description = "Name of IAM role to create"
-  type        = bool
+  type        = string
   default     = null
 }
 
