@@ -48,6 +48,8 @@ resource "aws_cloudwatch_event_rule" "schedule" {
   name                = module.inspector_schedule_label.id
   description         = var.event_rule_description
   schedule_expression = var.schedule_expression
+
+  tags = module.this.tags
 }
 
 resource "aws_cloudwatch_event_target" "target" {
