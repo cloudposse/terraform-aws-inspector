@@ -63,7 +63,7 @@ resource "aws_cloudwatch_event_target" "target" {
 module "iam_role" {
   count   = local.create_iam_role ? 1 : 0
   source  = "cloudposse/iam-role/aws"
-  version = "0.13.0"
+  version = "0.15.0"
 
   principals = {
     "Service" = ["events.amazonaws.com"]
