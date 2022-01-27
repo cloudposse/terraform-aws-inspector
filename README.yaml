@@ -89,10 +89,12 @@ usage: |-
 
   ```hcl
   module "inspector" {
-    source = "https://github.com/cloudposse/terraform-aws-inspector.git?ref=master"
+    source  = "cloudposse/inspector/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version     = "x.x.x"
     
     create_iam_role = true
-    enabled_rules   = ["arn:aws:inspector:us-east-2:646659390643:rulespackage/0-m8r61nnh"]
+    enabled_rules   = ["cis"]
   }
   ```
 
@@ -114,3 +116,5 @@ include:
 contributors:
   - name: "Matt Calhoun"
     github: "mcalhoun"
+  - name: "RB"
+    github: "nitrocode"
