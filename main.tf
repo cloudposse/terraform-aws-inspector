@@ -30,6 +30,17 @@ resource "aws_inspector_assessment_template" "assessment" {
   target_arn         = aws_inspector_assessment_target.target[0].arn
   duration           = var.assessment_duration
   rules_package_arns = local.rules_package_arns
+
+  dynamic "event_subscription" {
+    for_each = var.assessment_event_subscription
+
+    iterator = item
+
+    content {
+      event     = item.value.event
+      topic_arn = item.value.topic_arn
+    }
+  }
 }
 
 #-----------------------------------------------------------------------------------------------------------------------
