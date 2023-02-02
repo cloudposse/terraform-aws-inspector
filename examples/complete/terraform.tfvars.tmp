@@ -1,0 +1,8 @@
+enabled_rules = ["cis"]
+
+assessment_event_subscription = {
+  test1 = {
+    event     = "ASSESSMENT_RUN_COMPLETED"
+    topic_arn = "arn:aws:iam::498858591890:user/terraform-test"
+  }
+}
