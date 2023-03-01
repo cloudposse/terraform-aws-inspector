@@ -22,6 +22,15 @@ variable "assessment_duration" {
   default     = "3600" # 1 hour
 }
 
+variable "assessment_event_subscription" {
+  type = map(object({
+    event     = string
+    topic_arn = string
+  }))
+  description = "Configures sending notifications about a specified assessment template event to a designated SNS topic"
+  default     = {}
+}
+
 variable "schedule_expression" {
   type        = string
   description = <<-DOC
